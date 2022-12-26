@@ -4,11 +4,20 @@
 
 #include "CoreMinimal.h"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "SProjectileBase.h"
 #include "GameplayTagContainer.h"
 #include "SMagicProjectile.generated.h"
 
 class USActionEffect;
+=======
+#include "GameFramework/Actor.h"
+#include "SMagicProjectile.generated.h"
+
+class USphereComponent;
+class UProjectileMovementComponent;
+class UParticleSystemComponent;
+>>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 =======
 #include "GameFramework/Actor.h"
 #include "SMagicProjectile.generated.h"
@@ -28,16 +37,20 @@ public:
 	ASMagicProjectile();
 
 protected:
+<<<<<<< HEAD
 
 	UPROPERTY(EditDefaultsOnly, Category = "Damage")
 	FGameplayTag ParryTag;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Damage")
 	TSubclassOf<USActionEffect> BurningActionClass;
+=======
+>>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 
 	UFUNCTION()
 	void OnActorOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	virtual void PostInitializeComponents() override;
 
@@ -47,6 +60,11 @@ public:
 	USphereComponent* SphereComp;
 >>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 
+=======
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	USphereComponent* SphereComp;
+
+>>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UProjectileMovementComponent* MovementComp;
 
