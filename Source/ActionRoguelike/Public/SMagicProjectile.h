@@ -3,21 +3,31 @@
 #pragma once
 
 #include "CoreMinimal.h"
+<<<<<<< HEAD
 #include "SProjectileBase.h"
 #include "GameplayTagContainer.h"
 #include "SMagicProjectile.generated.h"
 
 class USActionEffect;
+=======
+#include "GameFramework/Actor.h"
+#include "SMagicProjectile.generated.h"
+
+class USphereComponent;
+class UProjectileMovementComponent;
+class UParticleSystemComponent;
+>>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 
 UCLASS()
-class ACTIONROGUELIKE_API ASMagicProjectile : public ASProjectileBase // Re-parented from AActor
+class ACTIONROGUELIKE_API ASMagicProjectile : public AActor
 {
 	GENERATED_BODY()
+	
+public:	
+
+	ASMagicProjectile();
 
 protected:
-	
-	UPROPERTY(EditDefaultsOnly, Category = "Damage")
-	float DamageAmount;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Damage")
 	FGameplayTag ParryTag;
@@ -28,10 +38,26 @@ protected:
 	UFUNCTION()
 	void OnActorOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
+<<<<<<< HEAD
 	virtual void PostInitializeComponents() override;
 
 public:
+=======
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	USphereComponent* SphereComp;
+>>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 
-	ASMagicProjectile();
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UProjectileMovementComponent* MovementComp;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UParticleSystemComponent* EffectComp;
+
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
+public:	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 
 };

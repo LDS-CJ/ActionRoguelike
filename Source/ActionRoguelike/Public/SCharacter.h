@@ -21,9 +21,25 @@ class ACTIONROGUELIKE_API ASCharacter : public ACharacter
 
 protected:
 
+<<<<<<< HEAD
 	/* VisibleAnywhere = read-only, still useful to view in-editor and enforce a convention. */
 	UPROPERTY(VisibleAnywhere, Category = "Effects")
 	FName TimeToHitParamName;
+=======
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	TSubclassOf<AActor> ProjectileClass;
+
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	UAnimMontage* AttackAnim;
+
+	FTimerHandle TimerHandle_PrimaryAttack;
+
+public:
+	// Sets default values for this character's properties
+	ASCharacter();
+
+protected:
+>>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 
 	UPROPERTY(VisibleAnywhere)
 	USpringArmComponent* SpringArmComp;
@@ -37,8 +53,13 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	USAttributeComponent* AttributeComp;
 
+<<<<<<< HEAD
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	USActionComponent* ActionComp;
+=======
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+>>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 
 	void MoveForward(float Value);
 
@@ -50,10 +71,13 @@ protected:
 
 	void PrimaryAttack();
 
+<<<<<<< HEAD
 	void BlackHoleAttack();
 
 	void Dash();
 
+=======
+>>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 	void PrimaryInteract();
 
 	UFUNCTION()
@@ -64,9 +88,10 @@ protected:
 	virtual FVector GetPawnViewLocation() const override;
 
 public:	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 
-	ASCharacter();
-
+	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UFUNCTION(Exec)

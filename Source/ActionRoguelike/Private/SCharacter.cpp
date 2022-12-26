@@ -36,6 +36,7 @@ ASCharacter::ASCharacter()
 	ActionComp = CreateDefaultSubobject<USActionComponent>("ActionComp");
 
 	GetCharacterMovement()->bOrientRotationToMovement = true;
+<<<<<<< HEAD
 	bUseControllerRotationYaw = false;
 	
 	// Enabled on mesh to react to incoming projectiles
@@ -59,8 +60,24 @@ void ASCharacter::PostInitializeComponents()
 FVector ASCharacter::GetPawnViewLocation() const
 {
 	return CameraComp->GetComponentLocation();
+=======
+
+	bUseControllerRotationYaw = false;
+>>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 }
 
+// Called when the game starts or when spawned
+void ASCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+	
+}
+
+// Called every frame
+void ASCharacter::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+}
 
 // Called to bind functionality to input
 void ASCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -74,9 +91,6 @@ void ASCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);
 
 	PlayerInputComponent->BindAction("PrimaryAttack", IE_Pressed, this, &ASCharacter::PrimaryAttack);
-	// Used generic name 'SecondaryAttack' for binding
-	PlayerInputComponent->BindAction("SecondaryAttack", IE_Pressed, this, &ASCharacter::BlackHoleAttack);
-	PlayerInputComponent->BindAction("Dash", IE_Pressed, this, &ASCharacter::Dash);
 	PlayerInputComponent->BindAction("PrimaryInteract", IE_Pressed, this, &ASCharacter::PrimaryInteract);
 
 	PlayerInputComponent->BindAction("Sprint", IE_Pressed, this, &ASCharacter::SprintStart);
@@ -131,6 +145,7 @@ void ASCharacter::SprintStop()
 
 void ASCharacter::PrimaryAttack()
 {
+<<<<<<< HEAD
 	ActionComp->StartActionByName(this, "PrimaryAttack");
 }
 
@@ -145,6 +160,30 @@ void ASCharacter::BlackHoleAttack()
 void ASCharacter::Dash()
 {
 	ActionComp->StartActionByName(this, "Dash");
+=======
+	PlayAnimMontage(AttackAnim);
+
+	GetWorldTimerManager().SetTimer(TimerHandle_PrimaryAttack, this, &ASCharacter::PrimaryAttack_TimeElapsed, 0.2f);
+
+	//GetWorldTimerManager().ClearTimer(TimerHandle_PrimaryAttack);
+}
+
+
+void ASCharacter::PrimaryAttack_TimeElapsed()
+{
+	if (ensure(ProjectileClass))
+	{
+		FVector HandLocation = GetMesh()->GetSocketLocation("Muzzle_01");
+
+		FTransform SpawnTM = FTransform(GetControlRotation(), HandLocation);
+
+		FActorSpawnParameters SpawnParams;
+		SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+		SpawnParams.Instigator = this;
+
+		GetWorld()->SpawnActor<AActor>(ProjectileClass, SpawnTM, SpawnParams);
+	}
+>>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 }
 
 

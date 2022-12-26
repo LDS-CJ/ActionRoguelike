@@ -2,16 +2,22 @@
 
 
 #include "SMagicProjectile.h"
-#include "SAttributeComponent.h"
 #include "Components/SphereComponent.h"
+<<<<<<< HEAD
 #include "SGameplayFunctionLibrary.h"
 #include "SActionComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "SActionEffect.h"
+=======
+#include "GameFramework/ProjectileMovementComponent.h"
+#include "Particles/ParticleSystemComponent.h"
+#include "SAttributeComponent.h"
+>>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 
 
 ASMagicProjectile::ASMagicProjectile()
 {
+<<<<<<< HEAD
 	SphereComp->SetSphereRadius(20.0f);
 	InitialLifeSpan = 10.0f;
 	DamageAmount = 20.0f;
@@ -28,6 +34,26 @@ void ASMagicProjectile::PostInitializeComponents()
 }
 
 
+=======
+ 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+
+	SphereComp = CreateDefaultSubobject<USphereComponent>("SphereComp");
+	SphereComp->SetCollisionProfileName("Projectile");
+	SphereComp->OnComponentBeginOverlap.AddDynamic(this, &ASMagicProjectile::OnActorOverlap);
+	RootComponent = SphereComp;
+
+	EffectComp = CreateDefaultSubobject<UParticleSystemComponent>("EffectComp");
+	EffectComp->SetupAttachment(SphereComp);
+
+	MovementComp = CreateDefaultSubobject<UProjectileMovementComponent>("MovementComp");
+	MovementComp->InitialSpeed = 1000.0f;
+	MovementComp->bRotationFollowsVelocity = true;
+	MovementComp->bInitialVelocityInLocalSpace = true;
+
+}
+
+>>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 void ASMagicProjectile::OnActorOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	if (OtherActor && OtherActor != GetInstigator())
@@ -38,6 +64,7 @@ void ASMagicProjectile::OnActorOverlap(UPrimitiveComponent* OverlappedComponent,
 		USActionComponent* ActionComp = Cast<USActionComponent>(OtherActor->GetComponentByClass(USActionComponent::StaticClass()));
 		if (ActionComp && ActionComp->ActiveGameplayTags.HasTag(ParryTag))
 		{
+<<<<<<< HEAD
 			MoveComp->Velocity = -MoveComp->Velocity;
 
 			SetInstigator(Cast<APawn>(OtherActor));
@@ -54,6 +81,27 @@ void ASMagicProjectile::OnActorOverlap(UPrimitiveComponent* OverlappedComponent,
 			{
 				ActionComp->AddAction(GetInstigator(), BurningActionClass);
 			}
+=======
+			AttributeComp->ApplyHealthChange(-20.0f);
+
+			Destroy();
+>>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 		}
 	}
 }
+
+
+// Called when the game starts or when spawned
+void ASMagicProjectile::BeginPlay()
+{
+	Super::BeginPlay();
+	
+}
+
+// Called every frame
+void ASMagicProjectile::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+}
+
