@@ -24,6 +24,7 @@ public:
 
 protected:
 
+	UPROPERTY()
 	USWorldUserWidget* ActiveHealthBar;
 
 	UPROPERTY(EditDefaultsOnly, Category = "UI")
@@ -66,4 +67,10 @@ protected:
 
 	UFUNCTION(NetMulticast, Unreliable)
 	void MulticastPawnSeen();
+
+	// -- Significance Manager -- //
+
+	/* Accessor for Blueprint to skip playing Audio or VFX based on significance thresholds */
+	//UFUNCTION(BlueprintPure, Category = "Optimization")
+	//bool IsSignificant(float RequiredSignificance = 0.0f) const;
 };

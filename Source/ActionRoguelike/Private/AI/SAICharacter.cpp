@@ -12,6 +12,7 @@
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "SActionComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 
 ASAICharacter::ASAICharacter()
