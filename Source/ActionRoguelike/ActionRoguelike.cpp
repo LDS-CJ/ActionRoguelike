@@ -4,5 +4,3 @@
 #include "Modules/ModuleManager.h"
 
 IMPLEMENT_PRIMARY_GAME_MODULE( FDefaultGameModuleImpl, ActionRoguelike, "ActionRoguelike" );
-
-DEFINE_LOG_CATEGORY(LogGame);
