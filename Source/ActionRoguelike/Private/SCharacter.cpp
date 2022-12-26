@@ -34,6 +34,7 @@ ASCharacter::ASCharacter()
 	AttributeComp = CreateDefaultSubobject<USAttributeComponent>("AttributeComp");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ActionComp = CreateDefaultSubobject<USActionComponent>("ActionComp");
 
 	GetCharacterMovement()->bOrientRotationToMovement = true;
@@ -47,6 +48,11 @@ ASCharacter::ASCharacter()
 	GetCapsuleComponent()->SetGenerateOverlapEvents(false);
 
 	TimeToHitParamName = "TimeToHit";
+=======
+	GetCharacterMovement()->bOrientRotationToMovement = true;
+
+	bUseControllerRotationYaw = false;
+>>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 =======
 	GetCharacterMovement()->bOrientRotationToMovement = true;
 
@@ -66,6 +72,7 @@ void ASCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
+<<<<<<< HEAD
 
 void ASCharacter::PostInitializeComponents()
 {
@@ -96,6 +103,8 @@ void ASCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
+=======
+>>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 
 // Called to bind functionality to input
 void ASCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -165,6 +174,7 @@ void ASCharacter::PrimaryAttack()
 {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ActionComp->StartActionByName(this, "PrimaryAttack");
 }
 
@@ -188,6 +198,16 @@ void ASCharacter::Dash()
 }
 
 
+=======
+	PlayAnimMontage(AttackAnim);
+
+	GetWorldTimerManager().SetTimer(TimerHandle_PrimaryAttack, this, &ASCharacter::PrimaryAttack_TimeElapsed, 0.2f);
+
+	//GetWorldTimerManager().ClearTimer(TimerHandle_PrimaryAttack);
+}
+
+
+>>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 =======
 	PlayAnimMontage(AttackAnim);
 

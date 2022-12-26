@@ -40,6 +40,9 @@ public:
 
 protected:
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
+=======
 >>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 =======
 >>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
@@ -58,8 +61,13 @@ protected:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	USActionComponent* ActionComp;
+=======
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+>>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 =======
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -81,11 +89,16 @@ protected:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	void BlackHoleAttack();
 
 	void Dash();
 
 =======
+>>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
+=======
+	void PrimaryAttack_TimeElapsed();
+
 >>>>>>> parent of 903e875 (Assignment 2 Solution Examples (Blackhole, Dash, Targeting))
 =======
 	void PrimaryAttack_TimeElapsed();
